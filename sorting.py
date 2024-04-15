@@ -47,9 +47,19 @@ def bubble_sort(array):
                 array[j], array[j+1] = array[j+1], array[j]
     return array
 
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
 def main():
     numbers = [9, 2, 4523, 5, 4, 3, 4, 8, 11, 134541, 42]
-    sorted_numbers = bubble_sort(numbers)
+    sorted_numbers = insertion_sort(numbers)
     print("Sorted numbers:", sorted_numbers)
 
 
