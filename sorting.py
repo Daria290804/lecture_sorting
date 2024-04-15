@@ -21,20 +21,37 @@ def read_data(file_name):
             iteration +=1
             return data
 
-def selection_sort(list_of_numbers):
-    for i in range(len(list_of_numbers)-1):
-        min_index = i
-        for j in range(i+1, len(list_of_numbers)):
-            if list_of_numbers[j] < list_of_numbers[min_index]:
-                min_index = j
-        list_of_numbers[i], list_of_numbers[min_index] = list_of_numbers[min_index], list_of_numbers[i]
-    return list_of_numbers
+def selection_sort(numbers, direction='ascending'):
+    n = len(numbers)
+    for i in range(n):
+        if direction == 'ascending':
+            min_idx = i
+            for j in range(i+1, n):
+                if numbers[j] < numbers[min_idx]:
+                    min_idx = j
+            numbers[i], numbers[min_idx] = numbers[min_idx], numbers[i]
+        elif direction == 'descending':
+            max_idx = i
+            for j in range(i+1, n):
+                if numbers[j] > numbers[max_idx]:
+                    max_idx = j
+            numbers[i], numbers[max_idx] = numbers[max_idx], numbers[i]
+        else:
+            return None
+    return numbers
+def bubble_sort(array):
+    n = len(array)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if array[j] > array[j+1]:
+                array[j], array[j+1] = array[j+1], array[j]
+    return array
 
 def main():
     numbers = [9, 2, 4523, 5, 4, 3, 4, 8, 11, 134541, 42]
-    sorted_numbers = selection_sort(numbers)
+    sorted_numbers = bubble_sort(numbers)
     print("Sorted numbers:", sorted_numbers)
+
 
 if __name__ == "__main__":
     main()
-
